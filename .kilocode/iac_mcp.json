@@ -1,0 +1,39 @@
+{
+  "mcpServers": {
+    "terraform": {
+      "command": "podman",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "docker.io/hashicorp/terraform-mcp-server"
+      ],
+      "alwaysAllow": [
+        "search_modules",
+        "get_module_details",
+        "search_providers",
+        "get_latest_provider_version",
+        "get_provider_details"
+      ]
+    },
+    "oci-documentation-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "oci-documentation-mcp-server@latest",
+        "python",
+        "-m",
+        "oci_documentation_mcp_server.server"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false,
+      "autoApprove": [],
+      "alwaysAllow": [
+        "search_documentation",
+        "read_documentation"
+      ]
+    }
+  }
+}
